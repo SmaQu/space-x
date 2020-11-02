@@ -7,12 +7,6 @@ import retrofit2.http.Path
 
 interface SpaceXService {
 
-    @GET("/capsules")
-    fun getCapsules(): Single<List<Capsule>>
-
-    @GET("/capsules/{id}")
-    fun getCapsule(@Path("id") id: Long): Single<Capsule>
-
     @GET("/company")
     fun getCompanyInfo(): Single<Company>
 

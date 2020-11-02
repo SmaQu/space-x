@@ -4,6 +4,8 @@ import android.app.Application
 import com.alastor.spacex.di.AppComponent
 import com.alastor.spacex.di.DaggerAppComponent
 import com.alastor.spacex.di.main.MainComponent
+import com.alastor.spacex.viewmodel.ViewModelProviderFactory
+import javax.inject.Inject
 
 class MainApplication: Application() {
 
@@ -13,6 +15,7 @@ class MainApplication: Application() {
         super.onCreate()
 
         appComponent = DaggerAppComponent.factory().create(this)
+
     }
 
     fun createMainComponent(): MainComponent {

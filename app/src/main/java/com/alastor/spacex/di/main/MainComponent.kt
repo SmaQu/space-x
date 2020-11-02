@@ -1,6 +1,7 @@
 package com.alastor.spacex.di.main
 
 import com.alastor.spacex.MainActivity
+import com.alastor.spacex.di.appmodule.network.CapsuleServiceModule
 import com.alastor.spacex.di.main.annotations.MainScope
 import com.alastor.spacex.di.main.modules.MainModule
 import com.alastor.spacex.di.main.modules.MainViewModelModule

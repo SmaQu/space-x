@@ -1,4 +1,4 @@
-package com.alastor.spacex.di
+package com.alastor.spacex.di.appmodule
 
 import com.alastor.spacex.di.main.MainComponent
 import dagger.Module
