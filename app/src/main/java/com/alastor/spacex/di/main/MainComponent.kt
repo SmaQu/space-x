@@ -6,13 +6,13 @@ import com.alastor.spacex.di.main.annotations.MainScope
 import com.alastor.spacex.di.main.modules.MainModule
 import com.alastor.spacex.di.main.modules.MainViewModelModule
 import com.alastor.spacex.di.main.modules.ViewModelFactoryModule
+import com.alastor.spacex.ui.MainFragment
 import dagger.Subcomponent
 
 @MainScope
 @Subcomponent(
     modules = [
         MainModule::class,
-        ViewModelFactoryModule::class,
         MainViewModelModule::class
     ]
 )
@@ -25,5 +25,7 @@ interface MainComponent {
     }
 
     fun inject(mainActivity: MainActivity)
+
+    fun inject(mainFragment: MainFragment)
 
 }

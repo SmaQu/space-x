@@ -1,6 +1,7 @@
-package com.alastor.spacex.network
+package com.alastor.spacex.repository
 
 import com.alastor.spacex.model.Capsule
+import com.alastor.spacex.network.CapsuleService
 import io.reactivex.Single
 import javax.inject.Inject
 import javax.inject.Singleton

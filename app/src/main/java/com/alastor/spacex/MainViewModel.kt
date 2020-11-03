@@ -3,7 +3,7 @@ package com.alastor.spacex
 import android.util.Log
 import androidx.lifecycle.ViewModel
 import com.alastor.spacex.model.Capsule
-import com.alastor.spacex.network.CapsuleRepository
+import com.alastor.spacex.repository.CapsuleRepository
 import io.reactivex.SingleObserver
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable

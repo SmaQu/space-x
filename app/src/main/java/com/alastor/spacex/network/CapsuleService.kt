@@ -4,7 +4,9 @@ import com.alastor.spacex.model.Capsule
 import io.reactivex.Single
 import retrofit2.http.GET
 import retrofit2.http.Path
+import javax.inject.Singleton
 
+@Singleton
 interface CapsuleService {
 
     @GET("capsules")
