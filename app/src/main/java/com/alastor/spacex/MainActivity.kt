@@ -2,18 +2,9 @@ package com.alastor.spacex
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.ViewModelProvider
 import com.alastor.spacex.di.main.MainComponent
-import com.alastor.spacex.ui.MainFragment
-import com.alastor.spacex.viewmodel.ViewModelProviderFactory
-import javax.inject.Inject
 
 class MainActivity : AppCompatActivity() {
-
-    @Inject
-    lateinit var providerFactory: ViewModelProviderFactory
-
-    private lateinit var viewModel: MainViewModel
 
     private var mainComponent: MainComponent? = null
 
@@ -21,11 +12,6 @@ class MainActivity : AppCompatActivity() {
         inject()
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
-        viewModel = ViewModelProvider(this, providerFactory).get(MainViewModel::class.java)
-
-        supportFragmentManager.beginTransaction().add(R.id.container, MainFragment()).commit()
-
     }
 
     public fun mainComponent(): MainComponent {
@@ -44,5 +30,9 @@ class MainActivity : AppCompatActivity() {
     override fun onDestroy() {
         super.onDestroy()
         mainComponent = null;
+    }
+
+    companion object {
+        private const val TAG = "MainActivity"
     }
 }

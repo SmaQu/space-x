@@ -1,6 +1,7 @@
 package com.alastor.spacex.network
 
 import com.alastor.spacex.model.Capsule
+import io.reactivex.Flowable
 import io.reactivex.Single
 import retrofit2.http.GET
 import retrofit2.http.Path
@@ -10,7 +11,7 @@ import javax.inject.Singleton
 interface CapsuleService {
 
     @GET("capsules")
-    fun getCapsules(): Single<List<Capsule>>
+    fun getCapsules(): Flowable<List<Capsule>>
 
     @GET("capsules/{id}")
     fun getCapsule(@Path("id") id: Long): Single<Capsule>

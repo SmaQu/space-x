@@ -1,43 +1,30 @@
 package com.alastor.spacex
 
 import android.util.Log
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.LiveDataReactiveStreams
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.alastor.spacex.model.Capsule
 import com.alastor.spacex.repository.CapsuleRepository
-import io.reactivex.SingleObserver
-import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
-import io.reactivex.disposables.Disposable
+import io.reactivex.functions.Function
 import io.reactivex.schedulers.Schedulers
 import javax.inject.Inject
 
-class MainViewModel @Inject constructor(capsuleRepository: CapsuleRepository) : ViewModel() {
+class MainViewModel @Inject constructor(private val capsuleRepository: CapsuleRepository) :
+    ViewModel() {
 
     private val disposable: CompositeDisposable = CompositeDisposable()
 
-    init {
-        Log.d("TAG", "Initialization of MainViewModel: ")
+    private val _capsuleLiveData = MutableLiveData<List<Capsule>>()
+    val capsuleLiveData: LiveData<List<Capsule>> by this::_capsuleLiveData
 
-        capsuleRepository.getAllCapsules()
-            .subscribeOn(Schedulers.io())
-            .observeOn(AndroidSchedulers.mainThread())
-            .subscribe(object : SingleObserver<List<Capsule>> {
-                override fun onSubscribe(d: Disposable) {
-                    disposable.add(d)
-                    Log.d(TAG, "onSubscribe: ")
-                }
-
-                override fun onSuccess(capsuleList: List<Capsule>) {
-                    capsuleList.forEach {
-                        Log.d(TAG, "onSuccess: ${it.id}")
-                    }
-                }
-
-                override fun onError(e: Throwable) {
-                    Log.d(TAG, "onError: $e")
-                }
-
-            })
+    public fun makeRequest(): LiveData<List<Capsule>> {
+        return LiveDataReactiveStreams.fromPublisher(
+            capsuleRepository.getAllCapsules()
+                .subscribeOn(Schedulers.io())
+        )
     }
 
     override fun onCleared() {
@@ -48,5 +35,4 @@ class MainViewModel @Inject constructor(capsuleRepository: CapsuleRepository) : 
     companion object {
         private const val TAG = "MainViewModel"
     }
-
 }
