@@ -15,11 +15,5 @@ class MainApplication: Application() {
         super.onCreate()
 
         appComponent = DaggerAppComponent.factory().create(this)
-
     }
-
-    fun createMainComponent(): MainComponent {
-        return appComponent.mainComponent().create()
-    }
-
 }

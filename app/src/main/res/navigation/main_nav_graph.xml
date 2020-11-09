@@ -7,9 +7,9 @@
 
     <fragment
         android:id="@+id/launchesFragment"
-        android:name="com.alastor.spacex.ui.launches.LaunchesFragment"
+        android:name="com.alastor.spacex.ui.upcominglaunches.UpComingLaunchesFragment"
         android:label="Launches"
-        tools:layout="@layout/fragment_launches" />
+        tools:layout="@layout/fragment_upcoming_launches" />
 
     <fragment
         android:id="@+id/launchesCompleteFragment"

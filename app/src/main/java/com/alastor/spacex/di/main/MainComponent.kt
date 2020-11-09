@@ -4,6 +4,7 @@ import com.alastor.spacex.MainActivity
 import com.alastor.spacex.di.main.annotations.MainScope
 import com.alastor.spacex.di.main.modules.MainModule
 import com.alastor.spacex.di.main.modules.MainViewModelModule
+import com.alastor.spacex.ui.upcominglaunches.UpComingLaunchesFragment
 import dagger.Subcomponent
 
 @MainScope
@@ -23,6 +24,6 @@ interface MainComponent {
 
     fun inject(mainActivity: MainActivity)
 
-//    fun inject(mainFragment: MainFragment)
+    fun inject(upComingLaunchesFragment: UpComingLaunchesFragment)
 
 }
