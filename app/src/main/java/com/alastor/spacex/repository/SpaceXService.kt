@@ -1,10 +1,11 @@
 package com.alastor.spacex.repository
 
 import com.alastor.spacex.model.*
+import com.alastor.spacex.model.pagination.Pagination
+import com.alastor.spacex.model.pagination.QueryBody
 import io.reactivex.Flowable
 import io.reactivex.Single
-import retrofit2.http.GET
-import retrofit2.http.Path
+import retrofit2.http.*
 import javax.inject.Singleton
 
 @Singleton
@@ -57,6 +58,10 @@ interface SpaceXService {
 
     @GET("launches")
     fun getAllLaunches(): Single<List<UpcomingLaunch>>
+
+    @Headers("Content-Type: application/json")
+    @POST("launches/query")
+    fun getLaunchesQuery(@Body queryBody: QueryBody): Single<Pagination<List<UpcomingLaunch>>>
 
     @GET("launches/{id}")
     fun getLaunch(@Path("id") id: Long): Single<Landpad>
