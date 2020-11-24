@@ -35,7 +35,7 @@ class UpComingLaunchesViewModel
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(object : SingleObserver<List<UpcomingLaunch>> {
                 override fun onSubscribe(d: Disposable) {
-                    _upComingLaunchesLiveData.value = Resource.Loading
+                        _upComingLaunchesLiveData.value = Resource.Loading
                     disposable.add(d)
                 }
 

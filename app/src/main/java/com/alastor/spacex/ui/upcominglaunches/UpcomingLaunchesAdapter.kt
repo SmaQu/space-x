@@ -6,11 +6,13 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.alastor.spacex.R
+import com.alastor.spacex.di.main.annotations.MainScope
 import com.alastor.spacex.model.UpcomingLaunch
 import java.util.*
 import javax.inject.Inject
 import kotlin.collections.ArrayList
 
+@MainScope
 class UpcomingLaunchesAdapter @Inject constructor() :
     RecyclerView.Adapter<UpcomingLaunchesAdapter.UpcomingLaunchViewHolder>() {
 
