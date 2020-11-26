@@ -6,13 +6,17 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.alastor.spacex.R
-import com.alastor.spacex.di.main.annotations.MainScope
 import com.alastor.spacex.model.UpcomingLaunch
+import dagger.hilt.InstallIn
+import dagger.hilt.android.components.FragmentComponent
+import dagger.hilt.android.scopes.ActivityRetainedScoped
+import dagger.hilt.android.scopes.ActivityScoped
+import dagger.hilt.android.scopes.FragmentScoped
 import java.util.*
 import javax.inject.Inject
 import kotlin.collections.ArrayList
 
-@MainScope
+@ActivityRetainedScoped
 class UpcomingLaunchesAdapter @Inject constructor() :
     RecyclerView.Adapter<UpcomingLaunchesAdapter.UpcomingLaunchViewHolder>() {
 

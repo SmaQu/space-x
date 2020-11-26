@@ -5,38 +5,23 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.alastor.spacex.*
-import com.alastor.spacex.model.pagination.Options
-import com.alastor.spacex.model.pagination.Query
-import com.alastor.spacex.model.pagination.QueryBody
 import com.alastor.spacex.repository.Resource
-import com.alastor.spacex.viewmodel.ViewModelProviderFactory
-import com.google.gson.Gson
+import dagger.hilt.android.AndroidEntryPoint
+import io.reactivex.disposables.CompositeDisposable
 import kotlinx.android.synthetic.main.fragment_upcoming_launches.*
 import javax.inject.Inject
 
+@AndroidEntryPoint
 class UpComingLaunchesFragment : Fragment(R.layout.fragment_upcoming_launches) {
-
-    @Inject
-    lateinit var factoryProvider: ViewModelProviderFactory
 
     @Inject
     lateinit var upcomingLaunchesAdapter: UpcomingLaunchesAdapter
 
-    private lateinit var viewModel: UpComingLaunchesViewModel
-
-    override fun onAttach(context: Context) {
-        super.onAttach(context)
-        inject()
-    }
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        viewModel =
-            ViewModelProvider(this, factoryProvider).get(UpComingLaunchesViewModel::class.java)
-    }
+    private val viewModel: UpComingLaunchesViewModel by viewModels()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -44,11 +29,6 @@ class UpComingLaunchesFragment : Fragment(R.layout.fragment_upcoming_launches) {
 
         requestUpComingLaunches()
         observeUpComingLaunches()
-
-    }
-
-    private fun inject() {
-        (activity as MainActivity).mainComponent().inject(this)
     }
 
     private fun requestUpComingLaunches() {

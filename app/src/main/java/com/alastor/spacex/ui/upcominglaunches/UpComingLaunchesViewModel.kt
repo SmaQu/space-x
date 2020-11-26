@@ -1,26 +1,20 @@
 package com.alastor.spacex.ui.upcominglaunches
 
 import android.util.Log
+import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.alastor.spacex.model.UpcomingLaunch
-import com.alastor.spacex.model.pagination.Options
-import com.alastor.spacex.model.pagination.Pagination
-import com.alastor.spacex.model.pagination.Query
-import com.alastor.spacex.model.pagination.QueryBody
 import com.alastor.spacex.repository.Repository
 import com.alastor.spacex.repository.Resource
-import com.google.gson.Gson
 import io.reactivex.SingleObserver
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
-import javax.inject.Inject
 
-class UpComingLaunchesViewModel
-@Inject constructor(
+class UpComingLaunchesViewModel @ViewModelInject constructor(
     private val repository: Repository,
     private val disposable: CompositeDisposable
 ) : ViewModel() {
@@ -35,7 +29,7 @@ class UpComingLaunchesViewModel
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(object : SingleObserver<List<UpcomingLaunch>> {
                 override fun onSubscribe(d: Disposable) {
-                        _upComingLaunchesLiveData.value = Resource.Loading
+                    _upComingLaunchesLiveData.value = Resource.Loading
                     disposable.add(d)
                 }
 

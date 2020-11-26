@@ -3,6 +3,9 @@ package com.alastor.spacex.repository
 import com.alastor.spacex.model.pagination.Pagination
 import com.alastor.spacex.model.pagination.QueryBody
 import com.alastor.spacex.model.UpcomingLaunch
+import dagger.hilt.InstallIn
+import dagger.hilt.android.components.ApplicationComponent
+import dagger.hilt.android.scopes.ActivityRetainedScoped
 import io.reactivex.Single
 import javax.inject.Inject
 import javax.inject.Singleton

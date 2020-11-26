@@ -1,19 +1,10 @@
 package com.alastor.spacex
 
 import android.app.Application
-import com.alastor.spacex.di.AppComponent
-import com.alastor.spacex.di.DaggerAppComponent
-import com.alastor.spacex.di.main.MainComponent
-import com.alastor.spacex.viewmodel.ViewModelProviderFactory
+import android.util.Log
+import dagger.hilt.android.HiltAndroidApp
 import javax.inject.Inject
 
+@HiltAndroidApp
 class MainApplication: Application() {
-
-    lateinit var appComponent: AppComponent
-
-    override fun onCreate() {
-        super.onCreate()
-
-        appComponent = DaggerAppComponent.factory().create(this)
-    }
 }
