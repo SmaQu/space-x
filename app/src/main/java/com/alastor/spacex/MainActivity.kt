@@ -1,39 +1,50 @@
 package com.alastor.spacex
 
-import android.content.Context
 import android.os.Bundle
-import android.util.AttributeSet
-import android.util.Log
-import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavController
 import androidx.navigation.ui.AppBarConfiguration
+import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.alastor.spacex.extensions.findNavControllerWithNavHost
-import com.google.android.material.bottomnavigation.BottomNavigationView
 import dagger.hilt.android.AndroidEntryPoint
-import javax.inject.Inject
+import kotlinx.android.synthetic.main.activity_main.*
 
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 
     private lateinit var navController: NavController
+    private lateinit var appBarConfiguration: AppBarConfiguration
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        setSupportActionBar(toolbar)
 
-        navController = findNavControllerWithNavHost(supportFragmentManager, R.id.main_nav_container)
-        implementBottomView()
+        navController =
+            findNavControllerWithNavHost(supportFragmentManager, R.id.main_nav_container)
+
+        appBarConfiguration = AppBarConfiguration(
+            setOf(R.id.launchesFragment, R.id.launchesCompleteFragment),
+            drawer_layout
+        )
+
+        setupActionBarWithNavController(navController, appBarConfiguration)
+        setupBottomView()
+        setupDrawerLayout()
     }
 
-    private fun implementBottomView() {
-        findViewById<BottomNavigationView>(R.id.bottom_nav_view)
-            .setupWithNavController(navController)
-        val appBarConfiguration =
-            AppBarConfiguration(setOf(R.id.launchesFragment, R.id.launchesCompleteFragment))
-        setupActionBarWithNavController(navController, appBarConfiguration)
+    private fun setupBottomView() {
+        bottom_nav_view.setupWithNavController(navController)
+    }
+
+    private fun setupDrawerLayout() {
+        drawer_nav_view.setupWithNavController(navController)
+    }
+
+    override fun onSupportNavigateUp(): Boolean {
+        return navController.navigateUp(appBarConfiguration) || super.onSupportNavigateUp()
     }
 
     companion object {

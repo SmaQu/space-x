@@ -15,6 +15,13 @@
         android:id="@+id/launchesCompleteFragment"
         android:name="com.alastor.spacex.ui.launchescomplete.LaunchesCompleteFragment"
         android:label="Launches complete"
-        tools:layout="@layout/fragment_launches_complet" />
+        tools:layout="@layout/fragment_launches_complete" />
+
+    <fragment
+        android:id="@+id/rocketsFragment"
+        android:name="com.alastor.spacex.ui.rockets.RocketsFragment"
+        android:label="Rockets"
+        tools:layout="@layout/fragment_rockets" />
+
 
 </navigation>
