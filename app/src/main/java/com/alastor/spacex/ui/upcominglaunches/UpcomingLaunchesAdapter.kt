@@ -16,7 +16,7 @@ import java.util.*
 import javax.inject.Inject
 import kotlin.collections.ArrayList
 
-@ActivityRetainedScoped
+@FragmentScoped
 class UpcomingLaunchesAdapter @Inject constructor() :
     RecyclerView.Adapter<UpcomingLaunchesAdapter.UpcomingLaunchViewHolder>() {
 

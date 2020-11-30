@@ -4,15 +4,11 @@ import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.alastor.spacex.extensions.single
+import com.alastor.spacex.extensions.runSingle
 import com.alastor.spacex.model.UpcomingLaunch
 import com.alastor.spacex.repository.Repository
 import com.alastor.spacex.repository.Resource
-import io.reactivex.SingleObserver
-import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
-import io.reactivex.disposables.Disposable
-import io.reactivex.schedulers.Schedulers
 
 class UpComingLaunchesViewModel @ViewModelInject constructor(
     private val repository: Repository,
@@ -21,8 +17,8 @@ class UpComingLaunchesViewModel @ViewModelInject constructor(
 
     private val upComingLaunchesLiveData = MutableLiveData<Resource<List<UpcomingLaunch>>>()
     fun upComingLaunches(): LiveData<Resource<List<UpcomingLaunch>>> {
-        return upComingLaunchesLiveData.single(repository.getUpComingLaunches()) {
-            d -> disposable.add(d)
+        return upComingLaunchesLiveData.runSingle(repository.getUpComingLaunches()) { d ->
+            disposable.add(d)
         }
     }
 
