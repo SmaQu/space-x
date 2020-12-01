@@ -40,6 +40,7 @@ def rxJavaAndroidVersion = '2.1.1'
 def daggerVersion = '2.29.1'
 def navigationVersion = '2.3.1'
 def hiltJetpackVersion = '1.0.0-alpha02'
+def materialDesignVersion = '1.2.1'
 
 dependencies {
     implementation fileTree(dir: "libs", include: ["*.jar"])
@@ -49,6 +50,10 @@ dependencies {
     implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
     implementation "androidx.core:core-ktx:1.3.2"
     implementation "androidx.fragment:fragment-ktx:1.2.5"
+
+    //Material (MDC)
+    implementation "com.google.android.material:material:$materialDesignVersion"
+    implementation "androidx.swiperefreshlayout:swiperefreshlayout:1.1.0"
 
     // Retrofit
     implementation "com.squareup.retrofit2:retrofit:$retrofitVersion"

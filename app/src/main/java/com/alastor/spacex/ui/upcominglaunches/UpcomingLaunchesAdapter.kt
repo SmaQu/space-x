@@ -1,5 +1,6 @@
 package com.alastor.spacex.ui.upcominglaunches
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -7,10 +8,6 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.alastor.spacex.R
 import com.alastor.spacex.model.UpcomingLaunch
-import dagger.hilt.InstallIn
-import dagger.hilt.android.components.FragmentComponent
-import dagger.hilt.android.scopes.ActivityRetainedScoped
-import dagger.hilt.android.scopes.ActivityScoped
 import dagger.hilt.android.scopes.FragmentScoped
 import java.util.*
 import javax.inject.Inject
@@ -46,7 +43,14 @@ class UpcomingLaunchesAdapter @Inject constructor() :
         private var itemTextView: TextView = itemView.findViewById(R.id.text_view_test_item)
 
         fun bindViews(upcomingLaunch: UpcomingLaunch) {
-            itemTextView.text = upcomingLaunch.toString()
+            val values = upcomingLaunch.toString().split(",")
+
+            val strings = StringBuilder()
+
+            values.forEach {
+                strings.appendLine(it)
+            }
+            itemTextView.text = strings
         }
     }
 
