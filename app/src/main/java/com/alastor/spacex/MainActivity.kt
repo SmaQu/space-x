@@ -20,17 +20,14 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        //setSupportActionBar(toolbar)
+        setSupportActionBar(toolbar)
 
         navController =
             findNavControllerWithNavHost(supportFragmentManager, R.id.main_nav_container)
 
-        appBarConfiguration = AppBarConfiguration(
-            setOf(R.id.launchesFragment, R.id.launchesCompleteFragment),
-            drawer_layout
-        )
+        appBarConfiguration = AppBarConfiguration(setOf(R.id.launchesFragment))
 
-        //setupActionBarWithNavController(navController, appBarConfiguration)
+        setupActionBarWithNavController(navController, appBarConfiguration)
         //setupBottomView()
         //setupDrawerLayout()
     }
