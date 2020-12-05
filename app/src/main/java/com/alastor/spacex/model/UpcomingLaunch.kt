@@ -10,7 +10,7 @@ data class UpcomingLaunch(
     @SerializedName("date_unix") val dateUnix: Long,
     @SerializedName("date_local") val dateLocal: String,
     @SerializedName("date_precision") val datePrecision: DatePrecision,
-    @SerializedName("static_fire_date_utc") val staticFireDateUTC: String,
+    @SerializedName("static_fire_date_utc") val staticFireDateUTC: String?,
     @SerializedName("static_fire_date_unix") val staticFireDateUnix: Long,
     @SerializedName("tdb") val tdb: Boolean,
     @SerializedName("net") val net: Boolean,

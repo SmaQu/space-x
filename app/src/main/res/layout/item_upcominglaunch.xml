@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="@dimen/dimen_margin_8"
@@ -16,14 +17,154 @@
         android:layout_margin="@dimen/dimen_margin_8">
 
         <TextView
-            android:id="@+id/text_view_test_item"
-            style="@style/TextAppearance.AppCompat.Body1"
+            android:id="@+id/text_view_name"
+            style="@style/TextAppearance.AppCompat.Display1"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:textColor="@color/textColorPrimary"
+            app:layout_constraintEnd_toStartOf="@+id/image_view_photo"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="CRS - 1010" />
+
+        <ImageView
+            android:id="@+id/image_view_photo"
+            android:layout_width="@dimen/logo_size"
+            android:layout_height="@dimen/logo_size"
+            android:layout_marginTop="@dimen/dimen_margin_8"
+            android:layout_marginEnd="@dimen/dimen_margin_8"
+            android:contentDescription="@string/mission_logo"
+            android:scaleType="fitCenter"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/text_view_name"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/image_view_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dimen_margin_8"
+            android:src="@drawable/ic_round_calendar_today"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/text_view_name"
+            tools:ignore="ContentDescription" />
+
+        <TextView
+            android:id="@+id/text_view_date_label"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dimen_margin_8"
+            android:layout_marginTop="@dimen/dimen_margin_8"
+            android:text="@string/launch_date"
+            android:textColor="@color/textColorSecondary"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/image_view_date"
+            app:layout_constraintTop_toBottomOf="@+id/text_view_name" />
+
+        <TextView
+            android:id="@+id/text_view_date"
+            style="@style/TextAppearance.AppCompat.Subhead"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dimen_margin_8"
             android:textColor="@color/textColorPrimary"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toBottomOf="@id/text_view_date_label"
+            tools:text="12-12-2012 --- 12:12" />
+
+        <ImageView
+            android:id="@+id/image_view_static_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dimen_margin_8"
+            android:src="@drawable/ic_round_calendar_today"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/text_view_date"
+            tools:ignore="ContentDescription" />
+
+        <TextView
+            android:id="@+id/text_view_static_date_label"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dimen_margin_8"
+            android:layout_marginTop="@dimen/dimen_margin_8"
+            android:text="@string/launch_date"
+            android:textColor="@color/textColorSecondary"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/image_view_static_date"
+            app:layout_constraintTop_toBottomOf="@+id/text_view_date" />
+
+        <TextView
+            android:id="@+id/text_view_static_fire"
+            style="@style/TextAppearance.AppCompat.Subhead"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dimen_margin_8"
+            android:textColor="@color/textColorPrimary"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/text_view_static_date_label"
+            tools:text="12-12-2012 --- 12:12" />
+
+        <TextView
+            android:id="@+id/text_view_label_flight_number"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dimen_margin_8"
+            android:text="@string/flight_number"
+            app:layout_constraintEnd_toStartOf="@id/text_view_flight_number"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/text_view_static_fire" />
+
+        <TextView
+            android:id="@+id/text_view_flight_number"
+            style="@style/TextAppearance.AppCompat.Body1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dimen_margin_8"
+            android:layout_marginTop="@dimen/dimen_margin_8"
+            android:textColor="@color/textColorPrimary"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/text_view_label_flight_number"
+            app:layout_constraintTop_toBottomOf="@id/text_view_static_fire"
+            tools:text="101" />
+
+        <TextView
+            android:id="@+id/text_view_label_cores_flight"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dimen_margin_8"
+            android:text="@string/flight_number"
+            app:layout_constraintEnd_toStartOf="@id/text_view_cores_flight"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/text_view_flight_number" />
+
+        <TextView
+            android:id="@+id/text_view_cores_flight"
+            style="@style/TextAppearance.AppCompat.Body1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dimen_margin_8"
+            android:layout_marginStart="@dimen/dimen_margin_8"
+            android:textColor="@color/textColorPrimary"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/text_view_label_cores_flight"
+            app:layout_constraintTop_toBottomOf="@id/text_view_flight_number"
+            tools:text="4" />
+
+        <TextView
+            android:id="@+id/text_view_cores_description"
+            style="@style/TextAppearance.AppCompat.Body1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dimen_margin_8"
+            android:textColor="@color/textColorPrimary"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/text_view_cores_flight" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </com.google.android.material.card.MaterialCardView>
